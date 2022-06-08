@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,7 +23,7 @@ public class Main {
     }
 
     @GetMapping("/guarda")
-    public String guardaCampeon(String nombre, String linea) {
+    public String guardaCampeon(@RequestParam String nombre, @RequestParam String linea) {
         Campeon completo = new Campeon();
         completo.setNombre(nombre);
         completo.setLinea(linea);
