@@ -48,5 +48,8 @@ public class Main {
         }
         return listado;
     }
-    
+    @GetMapping("/{palabra}")
+    public String transforma(@PathVariable String palabra) {
+        return Utils.transformame(palabra);
+    }
 }

@@ -14,6 +14,8 @@ public class Utils {
         }
         return "numero de vocales " + cuentavocal + " numero de consonantes " + cuentaconsonante;
     }
-
+public static String transformame(String palabrita){
+    return palabrita.toUpperCase();
+}
     
 }
