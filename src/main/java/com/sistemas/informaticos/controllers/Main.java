@@ -17,6 +17,11 @@ public class Main {
     @Autowired
     CampeonService campeonService;
 
+    @GetMapping("/")
+    public String inicio(@PathVariable String palabra) {
+        return "Mi servidor backend";
+    }
+
     @GetMapping("/contar/{palabra}")
     public String cuentaletras(@PathVariable String palabra) {
         return Utils.cuentapalabra(palabra);
@@ -43,4 +48,5 @@ public class Main {
         }
         return listado;
     }
+    
 }
