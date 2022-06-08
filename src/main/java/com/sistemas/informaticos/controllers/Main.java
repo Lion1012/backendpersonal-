@@ -1,7 +1,9 @@
 package com.sistemas.informaticos.controllers;
 
 import com.sistemas.informaticos.models.Campeon;
+import com.sistemas.informaticos.models.Traducido;
 import com.sistemas.informaticos.services.CampeonService;
+import com.sistemas.informaticos.services.TraductorService;
 import com.sistemas.informaticos.utils.Utils;
 
 import java.util.ArrayList;
@@ -16,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class Main {
     @Autowired
     CampeonService campeonService;
+
+    @Autowired
+    TraductorService traductorService;
 
     @GetMapping("/")
     public String inicio() {
@@ -40,7 +45,7 @@ public class Main {
     @GetMapping("/listar")
     public String listaCampeones() {
         ArrayList<Campeon> campeones = campeonService.listaCampeon();
-        String listado = "Mascotas registradas:<br/>";
+        String listado = "Lista de campeones:<br/>";
         for (Campeon campeon : campeones) {
             listado += campeon.getNombre() + "  ";
             listado += campeon.getLinea() + "  ";
@@ -51,5 +56,10 @@ public class Main {
     @GetMapping("/{palabra}")
     public String transforma(@PathVariable String palabra) {
         return Utils.transformame(palabra);
+    }
+    @GetMapping("/traduce/{palabra}")
+    public String getTranslation(@PathVariable String palabra){
+        Traducido traducido = traductorService.getTranslationFromAPI(palabra);
+        return traducido.responseData.translatedText;
     }
 }
