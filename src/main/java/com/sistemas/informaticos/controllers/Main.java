@@ -18,7 +18,7 @@ public class Main {
     CampeonService campeonService;
 
     @GetMapping("/")
-    public String inicio(@PathVariable String palabra) {
+    public String inicio() {
         return "Mi servidor backend";
     }
 
